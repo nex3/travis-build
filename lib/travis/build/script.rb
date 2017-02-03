@@ -70,7 +70,7 @@ module Travis
       end
 
       def compile(ignore_taint = false)
-        Shell.generate(sexp, ignore_taint)
+        Shell.generate(sexp, ignore_taint).tap {|x| puts "Generated script: \n#{x}\n\n"}
       end
 
       def sexp
