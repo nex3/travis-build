@@ -78,6 +78,8 @@ module Travis
             )
           end
 
+          puts "payload: \n#{payload}\n"
+
           compiled = Travis::Build.script(payload).compile
 
           content_type 'application/x-sh'
