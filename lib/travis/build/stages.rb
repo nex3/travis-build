@@ -58,11 +58,12 @@ module Travis
       end
 
       def run
+        sh.raw "cat </dev/null > $HOME/.build_stages"
         STAGES.each_slice(2) do |type, names|
           names.each { |name| run_stage(type, name) }
         end
 
-        sh.raw "source $HOME/.build_stages"
+        sh.raw "cat $HOME/.build_stages"
 
         stages.each_slice(2).each do |type, names|
           names.each do |stg|
